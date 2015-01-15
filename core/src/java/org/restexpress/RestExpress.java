@@ -138,6 +138,7 @@ public class RestExpress
 	public RestExpress()
 	{
 		super();
+		System.out.println("....DALU changes TEST....");
 		setName(DEFAULT_NAME);
 		useSystemOut();
 	}

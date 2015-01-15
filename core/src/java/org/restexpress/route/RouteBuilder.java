@@ -337,7 +337,7 @@ public abstract class RouteBuilder
 	{
 		try
 		{
-			return controller.getClass().getMethod(actionName, Request.class, Response.class);
+			return controller.getClass().getMethod(actionName, Request.class, Response.class, Object.class);
 		}
 		catch (Exception e)
 		{

@@ -142,8 +142,11 @@ extends SimpleChannelUpstreamHandler
 		resolveRoute(context);
 		resolveResponseProcessor(context);
 		invokePreprocessors(preprocessors, context.getRequest());
-		Object result = context.getAction().invoke(context.getRequest(), context.getResponse());
-
+		context.getAction().invoke(context.getRequest(), context.getResponse(), new DefaultResponseHandler(this, ctx, context));
+	}
+	 
+	public void sendResponse(ChannelHandlerContext ctx, MessageContext context, Object result)
+	{
 		if (result != null)
 		{
 			context.getResponse().setBody(result);
@@ -156,7 +159,7 @@ extends SimpleChannelUpstreamHandler
 		writeResponse(ctx, context);
 		notifySuccess(context);
 	}
-
+	
 	private void resolveResponseProcessor(MessageContext context)
     {
 		SerializationSettings s = serializationProvider.resolveResponse(context.getRequest(), context.getResponse(), false);

@@ -201,11 +201,11 @@ public abstract class Route
 		return urlMatcher.getParameterNames();
 	}
 
-	public Object invoke(Request request, Response response)
+	public Object invoke(Request request, Response response, Object obj)
 	{
 		try
         {
-	        return action.invoke(controller, request, response);
+	        return action.invoke(controller, request, response, obj);
         }
 		catch (InvocationTargetException e)
 		{

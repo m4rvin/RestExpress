@@ -60,9 +60,9 @@ public class Action
 	 * @param response
 	 * @return
 	 */
-    public Object invoke(Request request, Response response)
+    public Object invoke(Request request, Response response, Object obj)
     {
-    	return getRoute().invoke(request, response);
+    	return getRoute().invoke(request, response, obj);
     }
 
     /**
